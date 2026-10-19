@@ -53,7 +53,7 @@ Configure no `.env`:
 
 - `LANGSMITH_API_KEY`, seu próprio `USERNAME_LANGSMITH_HUB` e `LANGSMITH_PROJECT=oficina-prompt-quality`. As evidências deste repositório usam o handle público `marcoviz`.
 - `LLM_PROVIDER=google`, `GOOGLE_API_KEY`, `LLM_MODEL=gemini-3.1-flash-lite` e `EVAL_MODEL=gemini-3.1-flash-lite`, configuração usada nas iterações 2, 3 e 4 e compatível com `temperature=0`.
-- Para OpenAI, use `LLM_PROVIDER=openai` e `OPENAI_API_KEY` em vez da chave Google.
+- Para OpenAI, use `LLM_PROVIDER=openai` e `OPENAI_API_KEY`; altere também **`LLM_MODEL` e `EVAL_MODEL`** para nomes de modelos OpenAI disponíveis na sua conta e compatíveis com `temperature=0`. Não mantenha os nomes Gemini do `.env.example` ao trocar o provider. As evidências publicadas acima correspondem ao Gemini; trocar provider ou modelos exige uma nova avaliação para medir os resultados dessa configuração.
 
 Consulte os [modelos Gemini](https://ai.google.dev/gemini-api/docs/models) ou [modelos OpenAI](https://platform.openai.com/docs/models). Não envie o `.env` ao repositório.
 
