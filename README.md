@@ -18,7 +18,7 @@ O exemplo de CSV preserva o filtro da profissional selecionada e verifica que ou
 
 A v1 presente no starter usa uma instrução genérica, insere `bug_report` nas mensagens de sistema e usuário, não fornece exemplos e não define critérios de aceitação. A v2 deixa a variável somente na mensagem do usuário, explicita o papel, fixa o formato, demonstra entradas/saídas e separa fatos de lacunas.
 
-Essa comparação descreve os arquivos locais. O pull do Hub e a comparação empírica ainda precisam ser executados com credenciais. O identificador semente `leonanluppi/bug_to_user_story_v1` é obrigatório no exercício; os scripts preservam esse contrato.
+O pull real do Hub foi executado em 19/10/2026 pela função `pull_prompts_from_langsmith`, com leitura pública sem chave. O conteúdo importado confirma essa comparação e foi salvo no arquivo v1. A comparação empírica por métricas ainda depende das credenciais. O identificador semente `leonanluppi/bug_to_user_story_v1` é obrigatório no exercício; os scripts preservam esse contrato.
 
 ## Como Executar
 
@@ -65,7 +65,7 @@ PYTHONPATH=src pytest -q
 
 | Evidência exigida | Estado |
 |---|---|
-| Pull real do prompt semente | Aguarda chave LangSmith |
+| Pull real do prompt semente | Executado em 19/10/2026; v1 importada do Hub |
 | Prompt v2 público no próprio handle | Aguarda chave e handle |
 | Experimentos e cinco métricas ≥0,8 | Aguarda chaves e execução |
 | Dataset público com 15 exemplos | Aguarda experimentos e compartilhamento |
