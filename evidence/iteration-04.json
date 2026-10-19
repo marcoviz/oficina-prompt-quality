@@ -1,0 +1,590 @@
+{
+  "project_id": "3c29e829-f895-4700-bfd5-185197c5f010",
+  "runs": [
+    {
+      "id": "01a1560f-be34-7eab-a76c-80ae50531a49",
+      "example_id": "ef6c3256-911d-4337-bdd3-179340c1324a",
+      "inputs": {
+        "bug_report": "Botão de adicionar ao carrinho não funciona no produto ID 1234."
+      },
+      "outputs": {
+        "answer": "## Título\nCorrigir falha no botão de adicionar ao carrinho para o produto ID 1234\n\n## Contexto do defeito\nAtual: o botão de \"adicionar ao carrinho\" não executa a ação esperada ao ser clicado para o produto com ID 1234.\nEsperado: o produto deve ser adicionado ao carrinho com sucesso após o clique.\nReprodução: acessar a página do produto ID 1234 e clicar no botão de adicionar ao carrinho.\n\n## User Story\nComo usuário, quero adicionar o produto ID 1234 ao meu carrinho, para que eu possa prosseguir com a compra.\n\n## Critérios de aceitação\n1. Dado que estou na página do produto ID 1234, quando clicar no botão de adicionar ao carrinho, então o item deve ser incluído no carrinho.\n2. Dado que o item foi adicionado, quando verificar o carrinho, então o produto ID 1234 deve estar listado com a quantidade correta.\n3. Dado que o botão foi clicado, quando a ação for processada, então o sistema deve fornecer um feedback visual de sucesso ao usuário.\n\n## Plano técnico proposto\n1. Investigar o componente de interface responsável pelo botão de adicionar ao carrinho na página de detalhes do produto.\n2. Verificar se há erros de JavaScript no console do navegador ao clicar no botão para o ID 1234.\n3. Validar se a requisição de rede (API) está sendo disparada corretamente e qual o código de resposta (ex: 400, 404, 500) retornado pelo servidor.\n4. Proposta: Caso o erro seja de front-end, corrigir o binding do evento de clique; caso seja de back-end, ajustar o endpoint de adição ao carrinho para processar corretamente o ID 1234.\n5. Testar a adição de outros produtos para garantir que o problema é isolado ao ID 1234 ou se trata de uma falha sistêmica no fluxo de carrinho.\n\n## Pontos a esclarecer\nO problema ocorre apenas com o produto ID 1234 ou com todos os produtos da loja? O botão apresenta algum feedback visual (como um carregamento) ou permanece inerte?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:27:22.188283+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.89,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.865,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.9,
+          "comment": "O modelo transformou a reclamação em um ticket técnico de alta qualidade. A precisão é alta pois todas as informações técnicas são pertinentes e corretas para a resolução do bug. O recall é alto pois o modelo incorporou a User Story e os Critérios de Aceitação solicitados, adaptando-os ao contexto específico do ID 1234. A pequena perda de pontos deve-se ao fato de o modelo ter expandido o escopo para um plano técnico e perguntas de investigação, que, embora úteis, não estavam explicitamente na resposta esperada."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente e altamente profissional. A organização é impecável, utilizando seções claras que facilitam a leitura técnica. A linguagem é precisa, adequada ao contexto de desenvolvimento de software, e não apresenta ambiguidades. A concisão é muito boa, fornecendo um plano de ação completo sem excessos. O modelo superou a resposta de referência ao transformar um relato simples em um ticket técnico estruturado, o que é muito mais útil para a resolução do problema. A nota não é máxima apenas porque o nível de detalhamento técnico pode ser ligeiramente superior ao que um usuário comum esperaria."
+        },
+        {
+          "key": "precision",
+          "score": 0.83,
+          "comment": "A resposta é altamente precisa e útil, estruturando o problema como um ticket técnico. Não há alucinações (1.0), pois o modelo apenas expandiu o contexto do erro relatado. O foco (0.7) é ligeiramente menor, pois o modelo transformou uma reclamação simples em um documento de especificação técnica (User Story/Plano Técnico) que não foi solicitado, embora seja pertinente. A correção factual (0.8) é alta, pois os critérios de aceitação propostos alinham-se logicamente com a 'Ground Truth', apesar de serem mais específicos ao ID 1234 do que a referência genérica."
+        }
+      ]
+    },
+    {
+      "id": "01a1560f-b5de-7777-ab57-7265f9b202e3",
+      "example_id": "15602aa4-094f-4852-8acc-f5e16d7dc5e0",
+      "inputs": {
+        "bug_report": "Campo de email aceita texto sem @, permitindo cadastros inválidos."
+      },
+      "outputs": {
+        "answer": "## Título\nValidar formato de e-mail no cadastro\n\n## Contexto do defeito\nAtual: o campo de e-mail aceita entradas que não contêm o caractere \"@\", permitindo a persistência de dados inválidos.\nEsperado: o sistema deve validar a presença do caractere \"@\" (e, idealmente, a estrutura básica de um e-mail) antes de permitir o salvamento do cadastro.\n\n## User Story\nComo usuário, quero que o sistema valide o formato do meu e-mail, para garantir que o cadastro seja realizado com um endereço de contato válido.\n\n## Critérios de aceitação\n1. Dado um e-mail sem o caractere \"@\", quando o usuário tentar salvar o cadastro, então o sistema deve exibir uma mensagem de erro e impedir a conclusão da operação.\n2. Dado um e-mail com o caractere \"@\" e um domínio válido, quando o usuário salvar o cadastro, então o sistema deve processar a informação normalmente.\n3. Dado um e-mail com espaços ou caracteres especiais proibidos, quando o usuário tentar salvar, então o sistema deve validar a entrada e impedir o cadastro (regressão de validação).\n\n## Plano técnico proposto\nProposta: implementar uma validação de formato (Regex) no nível da interface (frontend) para feedback imediato e, obrigatoriamente, uma validação no nível da API (backend) para garantir a integridade dos dados.\n- Diagnóstico: verificar se existe alguma regra de validação atual no componente de formulário ou se o campo está configurado apenas como texto genérico.\n- Correção: aplicar máscara ou padrão de validação de e-mail (RFC 5322 ou similar) no campo correspondente.\n- Teste: realizar tentativas de cadastro com e-mails malformados (ex: \"usuario.com\", \"usuario@\") e verificar se o erro é disparado.\n\n## Pontos a esclarecer\nExiste uma lista de domínios permitidos ou o sistema deve aceitar qualquer formato que contenha \"@\" e um domínio?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:27:14.739782+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.89,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.8887,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.9474,
+          "comment": "A resposta gerada é excelente e cobre todos os pontos da resposta esperada (User Story e Critérios de Aceitação). A precisão é alta, pois as informações adicionais (plano técnico e pontos a esclarecer) são altamente relevantes e profissionais para um contexto de desenvolvimento. A pequena penalização na precisão deve-se ao fato de ter incluído critérios de aceitação extras (como validação de espaços ou domínios) que não foram solicitados na resposta esperada, embora sejam úteis. O recall é total, pois todos os requisitos da 'Ground Truth' foram contemplados."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente e superior à referência em termos de utilidade técnica. A organização é impecável, utilizando seções claras (User Story, Critérios, Plano Técnico) que facilitam a leitura. A linguagem é profissional e precisa, adequada ao contexto de desenvolvimento de software. Não há ambiguidades, pois os requisitos são detalhados. A concisão é alta, entregando um plano de ação completo sem excessos. O único ponto de atenção é que a resposta é mais técnica do que a referência, mas isso aumenta a clareza para o público-alvo (desenvolvedores), justificando a nota elevada."
+        },
+        {
+          "key": "precision",
+          "score": 0.83,
+          "comment": "A resposta é altamente precisa e tecnicamente correta, expandindo o problema para um formato de documentação de defeito (Jira/User Story). Não há alucinações, pois as sugestões técnicas (Regex, Backend) são práticas padrão. O foco é ligeiramente menor que 1.0 porque a resposta gerada adicionou seções não solicitadas (Plano técnico, Pontos a esclarecer) que extrapolam a simplicidade da 'Resposta Esperada' fornecida como referência, embora sejam úteis no contexto de desenvolvimento de software."
+        }
+      ]
+    },
+    {
+      "id": "01a1560f-a993-7c10-a829-5b12b064d4d6",
+      "example_id": "8fe7651a-26e0-441e-9b3e-e5f7d6340ae6",
+      "inputs": {
+        "bug_report": "No iOS, ao girar o celular para landscape, o layout da tela de perfil fica quebrado."
+      },
+      "outputs": {
+        "answer": "## Título\nCorrigir quebra de layout na tela de perfil ao rotacionar para landscape no iOS\n\n## Contexto do defeito\nAtual: o layout da tela de perfil apresenta falhas de exibição (quebra) quando o dispositivo iOS é rotacionado para o modo paisagem (landscape).\nEsperado: o layout deve se adaptar corretamente à orientação landscape, mantendo a integridade dos elementos da tela de perfil.\n\n## User Story\nComo usuário de iOS, quero que o layout da tela de perfil se ajuste automaticamente ao girar o celular, para que eu possa visualizar minhas informações corretamente em qualquer orientação.\n\n## Critérios de aceitação\n1. Dado que estou na tela de perfil em um dispositivo iOS, quando rotacionar o dispositivo para o modo landscape, então os elementos da tela não devem apresentar sobreposição ou cortes.\n2. Dado que estou na tela de perfil em modo landscape, quando rotacionar o dispositivo de volta para o modo portrait, então o layout deve retornar ao estado original sem erros de renderização.\n3. Dado que o layout foi ajustado, quando navegar entre diferentes seções da tela de perfil em modo landscape, então a responsividade deve ser mantida em todos os estados.\n\n## Plano técnico proposto\nProposta: investigar as restrições de layout (Auto Layout ou CSS Flexbox/Grid, dependendo da tecnologia utilizada) aplicadas à tela de perfil. \n1. Diagnóstico: identificar quais componentes específicos estão causando o estouro ou a quebra de layout ao mudar a proporção da tela.\n2. Correção: ajustar as regras de responsividade ou as restrições de tamanho para permitir que os elementos se redimensionem ou se reorganizem adequadamente em larguras maiores.\n3. Testes: validar a renderização em simuladores iOS com diferentes tamanhos de tela (ex: iPhone SE vs. iPhone Pro Max) em ambas as orientações.\n\n## Pontos a esclarecer\nQuais elementos específicos da tela de perfil (ex: foto, campos de texto, botões) apresentam a quebra visual mais crítica? Existe algum erro de console ou log de layout associado a essa mudança de orientação?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:27:12.605589+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.86,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.9087,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.9474,
+          "comment": "A resposta gerada é de alta qualidade e cobre todos os pontos da resposta esperada (User Story e Critérios de Aceitação). A precisão é alta, pois as informações adicionais (plano técnico e pontos a esclarecer) são relevantes e úteis para o contexto de desenvolvimento, embora não estivessem na resposta esperada. Não houve informações incorretas ou inventadas. O recall é total, pois todos os requisitos da 'Ground Truth' foram incorporados e expandidos de forma profissional."
+        },
+        {
+          "key": "clarity",
+          "score": 0.85,
+          "comment": "A resposta é extremamente organizada e profissional, utilizando uma estrutura de documentação técnica (User Story, Critérios, Plano) que facilita a compreensão. A linguagem é técnica, porém clara e precisa. Embora seja muito mais completa que a resposta esperada, essa riqueza de detalhes não gera ambiguidade, mas sim um guia prático para a resolução do problema. O score não é máximo apenas porque a resposta excede a concisão necessária para uma solicitação simples, adicionando um plano técnico que, embora útil, vai além do que foi solicitado originalmente."
+        },
+        {
+          "key": "precision",
+          "score": 0.87,
+          "comment": "A resposta é altamente precisa e profissional, estruturando o problema como um ticket técnico completo. Não há alucinações, pois as sugestões técnicas (Auto Layout, CSS) são padrões da indústria para o problema relatado. O foco é excelente, embora a resposta tenha expandido o escopo da 'Ground Truth' (que era apenas uma User Story e critérios) para um plano técnico completo. Isso não é um erro, mas uma adição de valor. A correção factual é total, alinhando-se perfeitamente às necessidades de desenvolvimento para o bug descrito."
+        }
+      ]
+    },
+    {
+      "id": "01a1560f-573e-797e-84f9-dd50fdb2acfb",
+      "example_id": "9da5400e-d5eb-41dc-bfcc-d3b7f4cf7f3c",
+      "inputs": {
+        "bug_report": "Dashboard mostra contagem errada de usuários ativos. Mostra 50 mas só há 42 na lista."
+      },
+      "outputs": {
+        "answer": "## Título\nCorrigir divergência na contagem de usuários ativos no Dashboard\n\n## Contexto do defeito\nAtual: O contador de usuários ativos no Dashboard exibe o valor \"50\", enquanto a listagem detalhada apresenta apenas \"42\" registros.\nEsperado: O contador deve exibir o número exato de usuários presentes na lista de ativos.\n\n## User Story\nComo administrador, quero que o contador de usuários ativos no Dashboard reflita a quantidade real de usuários listados, para que eu tenha uma visão precisa do sistema.\n\n## Critérios de aceitação\n1. Dado que existem 42 usuários ativos, quando o Dashboard for carregado, então o contador deve exibir o valor \"42\".\n2. Dado que um novo usuário se torna ativo ou um usuário inativa, quando a lista for atualizada, então o contador deve ser recalculado para corresponder ao total da lista.\n3. Dado que o contador exibe um valor, quando o usuário clicar para ver a lista, então a contagem de itens exibidos deve ser idêntica ao valor do contador.\n\n## Plano técnico proposto\nProposta: Investigar a lógica de agregação (query ou serviço) que alimenta o contador no Dashboard. Verificar se há filtros aplicados ao contador que não estão sendo aplicados à listagem (ex: usuários em estado pendente, inativos ou duplicados sendo contados incorretamente).\n1. Diagnóstico: Comparar a query que gera o número do contador com a query que popula a lista.\n2. Correção: Alinhar os critérios de filtragem de \"usuário ativo\" entre ambos os componentes.\n3. Teste: Validar a contagem em cenários com 0, 1 e múltiplos usuários ativos para garantir a consistência.\n\n## Pontos a esclarecer\nO contador considera usuários em estados intermediários (ex: \"pendente de ativação\") que a lista oculta?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:27:09.459198+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.89,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.8521,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.8743,
+          "comment": "A resposta gerada é de alta qualidade, estruturando o problema como um ticket técnico completo. A precisão é alta, pois todas as informações são pertinentes e úteis para a resolução. O recall é ligeiramente inferior porque, embora a User Story e os critérios de aceitação cubram a essência do esperado, a resposta gerada focou em cenários específicos (ex: 42 usuários) em vez de manter a generalidade dos critérios de aceitação da Ground Truth (ex: tempo real e status 'ativo'). A adição do plano técnico agrega valor, mas não estava na expectativa original."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente e superior à referência em termos de utilidade técnica. A organização em tópicos (Contexto, User Story, Critérios, Plano Técnico) é impecável e facilita a leitura. A linguagem é profissional, técnica e direta, sem ambiguidades. A concisão é adequada, pois, embora seja mais longa que a referência, cada seção adiciona valor prático para a resolução do problema (como o plano de diagnóstico). A clareza é máxima, transformando um relato de erro simples em um ticket de desenvolvimento completo e pronto para execução."
+        },
+        {
+          "key": "precision",
+          "score": 0.83,
+          "comment": "A resposta é altamente precisa e profissional, estruturando o problema como um ticket técnico. Não há alucinações (1.0), pois o modelo infere logicamente as causas do erro. O foco (0.7) é ligeiramente menor que o ideal, pois o modelo expandiu a pergunta simples para um formato de 'User Story' e 'Plano Técnico' não solicitados, embora úteis. A correção factual (0.8) é alta, alinhando-se à Ground Truth, mas adicionando complexidade técnica (como a investigação de queries) que, embora correta, extrapola o escopo da solicitação original."
+        }
+      ]
+    },
+    {
+      "id": "01a1560f-15f1-71f5-8842-f20e8a4d16dc",
+      "example_id": "af9f35c7-d623-491e-94a6-953a1f4d3dfc",
+      "inputs": {
+        "bug_report": "Imagens de produtos não aparecem no Safari. No Chrome funciona normal."
+      },
+      "outputs": {
+        "answer": "## Título\nExibir imagens de produtos no navegador Safari\n\n## Contexto do defeito\nAtual: as imagens dos produtos não são carregadas quando o site é acessado através do navegador Safari.\nEsperado: as imagens dos produtos devem ser exibidas corretamente no Safari, assim como ocorre no Chrome.\nReprodução: acessar a página de produtos utilizando o navegador Safari.\n\n## User Story\nComo usuário, quero visualizar as imagens dos produtos no navegador Safari, para que eu possa identificar os itens que desejo comprar.\n\n## Critérios de aceitação\n1. Dado que estou utilizando o navegador Safari, quando acessar a página de produtos, então as imagens dos produtos devem ser carregadas e exibidas.\n2. Dado que a correção foi aplicada, quando acessar a página de produtos no Chrome, então o comportamento de exibição das imagens deve ser mantido (regressão).\n\n## Plano técnico proposto\nProposta: investigar se o formato das imagens (ex: WebP, AVIF) ou as políticas de carregamento (Lazy Loading) possuem compatibilidade limitada ou exigem prefixos específicos para o motor WebKit do Safari.\n1. Diagnóstico: verificar o console de erros do Safari (Web Inspector) para identificar se há falhas de rede (404), erros de decodificação de imagem ou bloqueios de CORS.\n2. Correção: ajustar o formato das imagens ou a implementação da tag `<img>` / `picture` para garantir compatibilidade cross-browser.\n3. Teste: validar a renderização em diferentes versões do Safari e confirmar que não houve impacto na exibição em outros navegadores.\n\n## Pontos a esclarecer\nQual é o formato atual das imagens (ex: .jpg, .png, .webp)? Existe alguma mensagem de erro específica exibida no console do desenvolvedor do Safari ao tentar carregar a página?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:48.381587+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.84,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.8521,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.8743,
+          "comment": "A resposta gerada é altamente relevante e tecnicamente precisa, expandindo o escopo para um formato de ticket de desenvolvimento útil. A precisão é alta, embora contenha informações extras (plano técnico) não solicitadas explicitamente, mas pertinentes. O recall é alto pois cobre a User Story e os critérios de aceitação essenciais, embora tenha omitido a comparação específica de 'qualidade' e 'tempo de carregamento' presentes na expectativa original, focando apenas na renderização básica."
+        },
+        {
+          "key": "clarity",
+          "score": 0.85,
+          "comment": "A resposta é excelente em organização e estrutura técnica, transformando um relato simples em um ticket de desenvolvimento profissional. A linguagem é precisa e o conteúdo é livre de ambiguidades. O único ponto de redução é na concisão: embora o conteúdo seja valioso, ele é significativamente mais extenso do que a 'Resposta Esperada', adicionando um plano técnico que, embora útil, excede o escopo direto da solicitação do usuário, que buscava apenas uma descrição do problema."
+        },
+        {
+          "key": "precision",
+          "score": 0.83,
+          "comment": "A resposta gerada é tecnicamente precisa e útil, tratando o problema como um ticket de suporte/desenvolvimento. Não há alucinações (1.0), pois as sugestões técnicas (WebP, WebKit, CORS) são causas reais para esse comportamento. O foco (0.7) é alto, embora a resposta tenha expandido o formato para um 'Plano Técnico' não solicitado, indo além da simples resolução. A correção factual (0.8) é alta, pois atende aos critérios de aceitação esperados, embora o formato da resposta seja mais estruturado do que o solicitado na 'Ground Truth', o que é uma melhoria prática, mas uma divergência de formato."
+        }
+      ]
+    },
+    {
+      "id": "01a1560f-0638-7e62-9026-75a7d2ea5a3b",
+      "example_id": "06dab105-b587-43c1-9c4f-795ee1c3529f",
+      "inputs": {
+        "bug_report": "Webhook de pagamento aprovado não está sendo chamado.\n\nSteps to reproduce:\n1. Fazer pedido de R$ 100\n2. Pagar com cartão de crédito\n3. Pagamento é aprovado no gateway\n4. Sistema não recebe notificação\n5. Status do pedido fica como \"pendente\"\n\nLogs do gateway mostram: HTTP 500 ao tentar POST /api/webhooks/payment"
+      },
+      "outputs": {
+        "answer": "## Título\nCorrigir falha no processamento de webhooks de pagamento aprovado\n\n## Contexto do defeito\nAtual: O sistema retorna erro HTTP 500 ao receber o POST do gateway no endpoint `/api/webhooks/payment`. Como consequência, o webhook não é processado e o pedido permanece com status \"pendente\" mesmo após a aprovação do pagamento.\nEsperado: O sistema deve processar a notificação de pagamento aprovado com sucesso (HTTP 200 ou 202) e atualizar o status do pedido para \"pago\" ou \"aprovado\".\nReprodução: Realizar um pedido de R$ 100, efetuar o pagamento via cartão de crédito e verificar o log do gateway, que registra erro 500 no endpoint de webhook.\n\n## User Story\nComo sistema, quero processar corretamente as notificações de pagamento aprovado enviadas pelo gateway, para que o status do pedido seja atualizado automaticamente.\n\n## Critérios de aceitação\n1. Dado que o gateway envia um POST para `/api/webhooks/payment` com o status de aprovação, quando o sistema processar a requisição, então o status do pedido deve ser alterado para \"aprovado\" ou \"pago\".\n2. Dado que o gateway envia um POST para `/api/webhooks/payment`, quando o processamento for bem-sucedido, então o sistema deve retornar um código de status HTTP 200 ou 202 para o gateway.\n3. Dado que o webhook é processado, quando o pedido for consultado, então o status não deve mais constar como \"pendente\".\n4. Regressão: O sistema deve continuar processando outros tipos de notificações (se houver) sem gerar erro 500.\n\n## Plano técnico proposto\n1. **Diagnóstico:** Investigar o log de erro do servidor no endpoint `/api/webhooks/payment` para identificar a causa do HTTP 500 (ex: exceção não tratada, erro de conexão com banco de dados ou falha na desserialização do payload do gateway).\n2. **Correção:** \n   - Implementar tratamento de exceções no controller/handler do webhook para evitar que falhas internas resultem em erro 500 sem log detalhado.\n   - Validar se o payload enviado pelo gateway está sendo mapeado corretamente para o modelo de dados do sistema.\n   - Garantir que a transação de atualização do status do pedido seja concluída com sucesso.\n3. **Testes:** \n   - Simular um POST para o endpoint `/api/webhooks/payment` com um payload de teste (mock) contendo o status de aprovação e verificar se o status do pedido é alterado no banco de dados.\n   - Validar o comportamento do sistema ao receber payloads malformados (deve retornar erro 400, não 500).\n\n## Pontos a esclarecer\nO erro 500 ocorre para todos os webhooks de pagamento ou apenas para pagamentos via cartão de crédito? Existe algum log de erro interno no sistema (além do log do gateway) que detalhe a exceção ocorrida no momento do POST?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:31.664728+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.91,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.8972,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.9243,
+          "comment": "A resposta é altamente precisa e relevante, estruturando o problema como um ticket técnico completo. A precisão é alta pois todas as informações técnicas estão corretas. O recall é ligeiramente inferior porque a resposta omitiu explicitamente o requisito de 'enviar email de confirmação' e 'logar o evento para auditoria', presentes na resposta esperada. No entanto, o modelo expandiu o escopo com um plano técnico e diagnóstico muito úteis, compensando a omissão com valor agregado."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente, apresentando uma estrutura técnica impecável e muito superior à referência em termos de utilidade prática. A organização em seções (Contexto, User Story, Critérios, Plano Técnico) facilita a leitura e a execução. A linguagem é profissional e precisa, adequada ao contexto de desenvolvimento de software. A ausência de ambiguidade é total, pois o plano de ação é claro. A pontuação não é máxima apenas porque, em termos de concisão, o texto é um pouco mais longo que o necessário para um ticket simples, mas isso é compensado pela alta qualidade técnica."
+        },
+        {
+          "key": "precision",
+          "score": 0.87,
+          "comment": "A resposta é altamente precisa e técnica, estruturando o problema como um ticket de correção de bug. Não há alucinações, pois as sugestões de diagnóstico (exceções, desserialização) são condizentes com um erro 500. O foco é excelente, embora a resposta gerada tenha expandido o formato para um plano de ação completo, enquanto a 'Ground Truth' era mais concisa. A correção factual é alta, pois aborda corretamente a causa raiz (erro 500) e propõe soluções lógicas para o problema relatado pelo usuário."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-fb3f-7f09-b87b-3a9691560b2e",
+      "example_id": "e6069b7a-8bc5-4c91-9253-0a52ed4db8c7",
+      "inputs": {
+        "bug_report": "Relatório de vendas demora mais de 2 minutos para gerar quando filtro ultrapassa 1000 registros.\n\nDetalhes:\n- Query SQL está sem index na coluna data_venda\n- Timeout do navegador após 120 segundos\n- Usuários reclamando de lentidão no horário comercial"
+      },
+      "outputs": {
+        "answer": "## Título\nOtimização da geração de relatório de vendas com alto volume de registros\n\n## Contexto do defeito\nAtual: A geração do relatório de vendas excede 120 segundos (timeout do navegador) quando o filtro processa mais de 1000 registros.\nFatos do relato:\n- A query SQL utilizada na geração do relatório não possui índice na coluna `data_venda`.\n- O timeout do navegador ocorre após 120 segundos de espera.\n- O impacto é sentido pelos usuários durante o horário comercial.\n\n## User Story\nComo usuário, quero gerar o relatório de vendas de forma eficiente, para que eu possa obter os dados necessários sem interrupções por timeout, independentemente do volume de registros filtrados.\n\n## Critérios de aceitação\n1. Dado um filtro que resulte em mais de 1000 registros, quando o usuário solicitar a geração do relatório, então o sistema deve processar a consulta e exibir o resultado antes do limite de 120 segundos.\n2. Dado que o relatório foi solicitado, quando o processamento for concluído, então o sistema deve apresentar os dados corretamente, sem erros de conexão ou timeout.\n3. Dado um filtro por `data_venda`, quando o relatório for gerado, então o tempo de resposta deve ser significativamente reduzido em comparação ao tempo atual, garantindo a estabilidade durante o horário comercial.\n\n## Plano técnico proposto\n1. **Diagnóstico e Correção de Banco de Dados:**\n   - Proposta: Criar um índice na coluna `data_venda` da tabela de vendas para otimizar a busca por intervalos de datas.\n   - Validação: Executar o plano de execução (`EXPLAIN ANALYZE`) da query antes e depois da criação do índice para confirmar a redução no custo de leitura.\n2. **Tratamento de Timeout:**\n   - Investigar se o timeout é estritamente do navegador (client-side) ou se há um limite configurado no servidor (ex: gateway, load balancer ou timeout da aplicação).\n   - Proposta: Caso a otimização da query não seja suficiente para grandes volumes, implementar uma estratégia de processamento assíncrono (ex: gerar o relatório em background e notificar o usuário ou disponibilizar para download) para evitar o bloqueio da interface.\n3. **Testes de Regressão:**\n   - Realizar testes de carga simulando filtros com mais de 1000 registros para garantir que o tempo de resposta esteja dentro dos limites aceitáveis.\n   - Verificar se a criação do índice não impacta negativamente a performance de inserção de novas vendas.\n\n## Pontos a esclarecer\n- Existe um limite máximo de registros que o relatório deve suportar além dos 1000 mencionados?\n- O sistema possui alguma funcionalidade de paginação ou exportação assíncrona que possa ser utilizada como alternativa ao carregamento síncrono atual?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:27.640162+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.94,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.9022,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.8743,
+          "comment": "A resposta é altamente precisa e tecnicamente superior ao esperado, adicionando sugestões valiosas como processamento assíncrono. A precisão não é 1.0 apenas porque o critério de aceitação de tempo (<30s) foi relaxado pelo modelo para 'antes do limite de 120 segundos', o que é menos ambicioso que a meta definida. O recall é 0.85 pois, embora cubra todos os pontos técnicos e a User Story, o modelo falhou em manter a meta estrita de 30 segundos, focando apenas em evitar o timeout."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente, apresentando uma estrutura profissional e lógica (User Story, Critérios, Plano Técnico). A linguagem é técnica, porém acessível e precisa. A ausência de ambiguidade é notável, pois o plano de ação cobre tanto a causa raiz quanto alternativas de arquitetura. O único ponto de redução na nota é a concisão: embora muito bem escrita, a resposta é significativamente mais longa que a referência, incluindo seções de 'Pontos a esclarecer' que, embora úteis, excedem o escopo estrito da solicitação original. No geral, é uma resposta de altíssima qualidade e clareza."
+        },
+        {
+          "key": "precision",
+          "score": 0.93,
+          "comment": "A resposta é altamente precisa e profissional. Não apresenta alucinações, baseando-se estritamente nos fatos fornecidos. O foco é excelente, estruturando o problema em formato de User Story e plano técnico. A correção factual é alta; embora a resposta esperada sugira um tempo de <30s e a gerada mencione apenas 'antes de 120s', isso não é uma contradição, mas uma abordagem mais conservadora. A inclusão de sugestões técnicas (processamento assíncrono, EXPLAIN ANALYZE) agrega valor real ao problema, mantendo total fidelidade ao contexto técnico original."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-ef6a-7c44-9d3b-3da2b22a34cf",
+      "example_id": "ef76b3e5-cd24-477c-b7fd-58251f351add",
+      "inputs": {
+        "bug_report": "Endpoint /api/users/:id retorna dados de qualquer usuário sem validar permissões.\n\nExemplo:\n- Usuário comum (ID 100) consegue acessar GET /api/users/1 (admin)\n- Recebe email, telefone, endereço do admin\n- Apenas admins deveriam ver dados de outros usuários\n\nSeveridade: ALTA - vazamento de dados pessoais"
+      },
+      "outputs": {
+        "answer": "## Título\nRestrição de acesso a dados de usuários via endpoint /api/users/:id\n\n## Contexto do defeito\nAtual: O endpoint `/api/users/:id` permite que qualquer usuário autenticado acesse os dados (email, telefone, endereço) de outros usuários, independentemente do nível de permissão.\nEsperado: O acesso aos dados de um usuário deve ser restrito ao próprio usuário ou a administradores do sistema.\nReprodução: Usuário comum (ID 100) realiza uma requisição GET para `/api/users/1` (admin) e obtém sucesso na leitura dos dados sensíveis.\nSeveridade: Alta (vazamento de dados pessoais).\n\n## User Story\nComo administrador do sistema, quero que o acesso aos dados de usuários seja validado por permissões, para garantir que usuários comuns não visualizem informações sensíveis de outros usuários ou administradores.\n\n## Critérios de aceitação\n1. Dado um usuário comum autenticado, quando ele tentar acessar `GET /api/users/:id` de outro usuário, então o sistema deve retornar erro 403 (Forbidden).\n2. Dado um usuário comum autenticado, quando ele tentar acessar `GET /api/users/:id` do seu próprio ID, então o sistema deve retornar os dados corretamente.\n3. Dado um usuário administrador autenticado, quando ele tentar acessar `GET /api/users/:id` de qualquer usuário, então o sistema deve retornar os dados corretamente.\n4. Dado um usuário não autenticado, quando ele tentar acessar `GET /api/users/:id`, então o sistema deve retornar erro 401 (Unauthorized).\n\n## Plano técnico proposto\n1. **Diagnóstico:** Investigar o middleware de autenticação e autorização aplicado à rota `/api/users/:id`. Verificar se a lógica de verificação de permissão está ausente ou se a implementação atual falha ao comparar o `user_id` do token com o `id` solicitado na URL.\n2. **Correção (Proposta):** Implementar uma verificação de autorização no nível do controlador ou middleware que valide:\n   - Se o usuário autenticado possui a role de \"admin\".\n   - OU se o `id` solicitado na URL corresponde ao `id` do usuário autenticado no token.\n3. **Testes:** \n   - Criar testes unitários/integração para cada cenário de acesso (próprio usuário, outro usuário comum, admin, usuário não autenticado).\n   - Validar a regressão garantindo que o acesso do próprio usuário continue funcionando.\n\n## Pontos a esclarecer\nO sistema utiliza algum padrão de controle de acesso baseado em roles (RBAC) ou claims específicas no token que identifiquem o nível de permissão do usuário?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:24.831026+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.94,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.9272,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.9243,
+          "comment": "A resposta é de altíssima qualidade. A precisão é quase total, pois todas as informações fornecidas são corretas e relevantes para a correção do bug. O recall é ligeiramente inferior porque a resposta gerada omitiu o requisito específico de 'log de auditoria' para administradores, mencionado na resposta esperada. No entanto, o modelo expandiu o escopo de forma positiva ao incluir cenários de usuários não autenticados (401) e um plano técnico detalhado, o que agrega valor prático superior ao solicitado originalmente."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente e superior à referência em termos de utilidade técnica. A organização é impecável, utilizando seções claras que facilitam a leitura. A linguagem é profissional, técnica e precisa, sem ambiguidades. A concisão é muito boa, embora seja um pouco mais extensa que a referência, o que se justifica pela inclusão de um plano técnico prático e acionável, agregando valor real ao desenvolvedor. A estrutura atende perfeitamente às necessidades de um ticket de correção de bug, sendo clara, direta e completa."
+        },
+        {
+          "key": "precision",
+          "score": 0.93,
+          "comment": "A resposta gerada é excelente e tecnicamente precisa. Ela expande a solicitação original para um formato de documento de especificação de defeito (bug report) completo, o que é uma prática recomendada. Não há alucinações, pois as sugestões de correção e os critérios de aceitação são padrões de mercado para falhas de IDOR (Insecure Direct Object Reference). A pequena redução no score deve-se ao fato de a resposta ter adicionado seções não solicitadas (Plano técnico e Pontos a esclarecer), embora estas sejam úteis e não divaguem do problema central."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-e674-7eee-89dc-0d644fd46862",
+      "example_id": "953b0f87-b46f-4833-880f-ceb7b01d0399",
+      "inputs": {
+        "bug_report": "Pipeline de vendas calcula valor total errado quando há desconto.\n\nCenário:\n- Produto A: R$ 1.000\n- Produto B: R$ 500\n- Desconto: 10%\n- Valor esperado: R$ 1.350\n- Valor mostrado: R$ 1.400\n\nO sistema aplica desconto só no primeiro produto."
+      },
+      "outputs": {
+        "answer": "## Título\nCorrigir cálculo do valor total do pipeline de vendas com desconto aplicado\n\n## Contexto do defeito\nAtual: O sistema aplica o desconto de 10% apenas sobre o primeiro item da lista, resultando em R$ 1.400 (R$ 900 do Produto A + R$ 500 do Produto B).\nEsperado: O desconto de 10% deve incidir sobre o valor total da soma dos produtos (R$ 1.500), resultando em R$ 1.350.\nReprodução: Adicionar Produto A (R$ 1.000) e Produto B (R$ 500) ao pipeline e aplicar um desconto de 10%.\n\n## User Story\nComo usuário do pipeline de vendas, quero que o desconto seja aplicado sobre o valor total dos produtos, para que o cálculo do preço final esteja correto.\n\n## Critérios de aceitação\n1. Dado um pipeline com múltiplos produtos, quando um desconto percentual for aplicado, então o sistema deve somar o valor de todos os produtos antes de subtrair o desconto.\n2. Dado um pipeline com os produtos A (R$ 1.000) e B (R$ 500), quando aplicado um desconto de 10%, então o valor total exibido deve ser R$ 1.350.\n3. Dado um pipeline com produtos, quando o desconto for removido, então o valor total deve retornar à soma original dos produtos (R$ 1.500).\n\n## Plano técnico proposto\nProposta: Revisar a lógica de cálculo no componente ou serviço responsável pelo fechamento do pedido. O mecanismo atual parece iterar sobre os itens aplicando o desconto individualmente; a correção deve mover a aplicação do desconto para após a agregação (soma) dos valores dos itens.\n- Diagnóstico: Localizar o método de cálculo de total e verificar se o desconto está sendo aplicado dentro do loop de itens ou no objeto de resumo do pedido.\n- Correção: Alterar a ordem de precedência para: `Total = (Soma dos Produtos) * (1 - Percentual de Desconto)`.\n- Testes: Validar com cenários de um único produto e múltiplos produtos, garantindo que o arredondamento de casas decimais (se houver) seja consistente.\n\n## Pontos a esclarecer\nNenhum com base no relato."
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:21.802261+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.96,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.9722,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.9744,
+          "comment": "A resposta gerada é excelente e altamente precisa. Todos os dados técnicos e a lógica de negócio estão corretos. O modelo capturou perfeitamente o problema, a User Story e os critérios de aceitação. A pontuação de recall não é 1.0 apenas porque a resposta gerada omitiu explicitamente a exigência de detalhamento (subtotal, desconto e total) nos critérios de aceitação, embora tenha mencionado os valores no contexto. A qualidade técnica e a estrutura superam a expectativa inicial."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente e superior à referência em termos de utilidade técnica. A organização é impecável, utilizando seções claras que facilitam a leitura tanto para o negócio quanto para o desenvolvimento. A linguagem é profissional, precisa e técnica, sem ser excessivamente complexa. Não há ambiguidades, pois o problema e a solução são descritos com precisão matemática. A concisão é muito boa; embora seja mais longa que a referência, o conteúdo extra (plano técnico) agrega valor real ao processo de correção do bug, justificando o tamanho."
+        },
+        {
+          "key": "precision",
+          "score": 0.97,
+          "comment": "A resposta gerada é extremamente precisa e profissional. Ela estruturou o problema como um ticket técnico completo, mantendo a fidelidade aos dados fornecidos (R$ 1.350 esperado vs R$ 1.400 atual). Não houve alucinações; a lógica técnica proposta é coerente com o erro descrito. A pequena diferença para a nota máxima deve-se apenas ao fato de a resposta ter expandido o formato para um plano técnico e critérios de aceitação detalhados, indo além da estrutura simples da 'Resposta Esperada', embora isso tenha agregado valor ao invés de prejudicar a precisão."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-db50-7350-a2da-f31a16869f93",
+      "example_id": "f52fa576-3be6-464d-9577-94ff94b6d3d5",
+      "inputs": {
+        "bug_report": "App Android trava ao carregar lista de notificações com mais de 50 itens.\n\nObservações:\n- Tela fica congelada por 5-10 segundos\n- ANR (Application Not Responding) em alguns casos\n- Lista não está usando paginação\n- Carrega tudo de uma vez na Thread principal"
+      },
+      "outputs": {
+        "answer": "## Título\nOtimizar carregamento da lista de notificações para evitar travamentos e ANR\n\n## Contexto do defeito\nAtual: O aplicativo Android congela por 5 a 10 segundos ao carregar listas com mais de 50 notificações, resultando em erros de ANR (Application Not Responding).\nCausa observada: A lista não utiliza paginação e o carregamento de todos os itens é realizado na Thread principal.\nEsperado: A lista deve carregar de forma fluida, sem congelar a interface ou disparar ANR, independentemente da quantidade de itens.\n\n## User Story\nComo usuário do aplicativo, quero que a lista de notificações carregue de forma rápida e responsiva, para que eu possa visualizar minhas mensagens sem interrupções ou travamentos no sistema.\n\n## Critérios de aceitação\n1. Dado que existem mais de 50 notificações, quando o usuário abrir a tela de notificações, então a interface não deve congelar e o tempo de resposta deve ser inferior a 1 segundo.\n2. Dado que a lista de notificações é carregada, quando o usuário rolar a tela, então o aplicativo não deve apresentar erros de ANR.\n3. Dado que a lista possui um volume alto de dados, quando o carregamento ocorrer, então a Thread principal deve permanecer livre para interações do usuário.\n\n## Plano técnico proposto\n1. **Diagnóstico:** Confirmar via *Profiler* do Android Studio o impacto do carregamento síncrono na Thread principal e o consumo de memória ao instanciar todos os objetos de notificação simultaneamente.\n2. **Correção (Proposta):**\n   - Implementar paginação (ex: *Paging Library* do Android) para carregar os dados sob demanda, limitando o número de itens carregados inicialmente.\n   - Mover a lógica de busca e processamento de dados da lista para uma *Background Thread* (ex: *Coroutines* com `Dispatchers.IO`).\n   - Utilizar um componente de lista eficiente (ex: `RecyclerView` com `ListAdapter` ou `DiffUtil`) para gerenciar a renderização dos itens.\n3. **Testes:**\n   - Validar o comportamento com um conjunto de dados simulado superior a 100 itens.\n   - Verificar a ausência de logs de ANR durante o carregamento inicial e a rolagem da lista.\n   - Garantir que a paginação carregue novos itens conforme o usuário atinge o final da lista atual.\n\n## Pontos a esclarecer\nNenhum com base no relato."
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:19.508241+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.94,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.9272,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.9243,
+          "comment": "A resposta é excelente e tecnicamente precisa. A precisão é alta pois todas as sugestões (Paging, Coroutines, RecyclerView) são corretas e relevantes. O recall é ligeiramente inferior a 1.0 pois a resposta gerada alterou o critério de tempo de carregamento de 'menos de 2 segundos' (esperado) para 'inferior a 1 segundo' e não mencionou explicitamente o 'ViewHolder pattern', embora tenha sugerido alternativas modernas e superiores como 'ListAdapter/DiffUtil'. No geral, a resposta expandiu o escopo técnico de forma positiva e profissional."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente e superior à referência em termos de estrutura profissional. A organização em tópicos (Contexto, User Story, Critérios, Plano Técnico) facilita a leitura e a implementação. A linguagem é técnica, porém clara e precisa para o contexto de desenvolvimento Android. A ausência de ambiguidade é total, pois o plano de ação é direto e fundamentado. A concisão é muito boa; embora seja mais longa que a referência, o conteúdo adicional (como o uso de Profiler e Coroutines) agrega valor prático sem ser redundante ou desnecessário para a resolução do problema."
+        },
+        {
+          "key": "precision",
+          "score": 0.93,
+          "comment": "A resposta é altamente precisa e tecnicamente correta. Não apresenta alucinações, baseando-se em boas práticas de desenvolvimento Android (Coroutines, Paging Library, RecyclerView). O foco é excelente, estruturando o problema como um ticket de engenharia completo. A pequena diferença em relação à 'Ground Truth' (como a sugestão de usar Paging Library em vez de paginação manual simples) é uma melhoria técnica legítima e não um erro. A resposta é superior à referência em termos de organização e profundidade técnica, mantendo total fidelidade ao problema relatado."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-b95d-7d4b-a22e-af0ce47d61e3",
+      "example_id": "261f21fd-5e21-41e5-892d-7c3213b70c2d",
+      "inputs": {
+        "bug_report": "Carrinho permite finalizar compra mesmo com produto fora de estoque.\n\nFluxo do bug:\n1. Produto tem 2 unidades em estoque\n2. Cliente A adiciona 2 unidades ao carrinho\n3. Estoque fica zerado\n4. Cliente B ainda consegue adicionar ao carrinho\n5. Cliente B finaliza compra\n6. Sistema gera pedido mas não tem estoque para enviar"
+      },
+      "outputs": {
+        "answer": "## Título\nImpedir finalização de compra de produtos sem estoque disponível\n\n## Contexto do defeito\nAtual: o sistema permite que o Cliente B adicione ao carrinho e finalize a compra de um produto que já teve seu estoque esgotado pelo Cliente A.\nEsperado: o sistema deve validar a disponibilidade de estoque no momento da adição ao carrinho e, obrigatoriamente, no momento da finalização da compra, impedindo a conclusão do pedido caso o item esteja indisponível.\nReprodução: \n1. Produto com 2 unidades em estoque.\n2. Cliente A adiciona 2 unidades ao carrinho (estoque zera).\n3. Cliente B adiciona o mesmo produto ao carrinho.\n4. Cliente B finaliza a compra com sucesso, gerando um pedido sem estoque para atendimento.\n\n## User Story\nComo cliente, quero ser impedido de finalizar uma compra de itens sem estoque, para evitar a geração de pedidos que não podem ser atendidos.\n\n## Critérios de aceitação\n1. Dado um produto com estoque zerado, quando o cliente tentar adicioná-lo ao carrinho, então o sistema deve exibir uma mensagem de erro informando que o produto está indisponível.\n2. Dado que um produto foi adicionado ao carrinho enquanto havia estoque, quando o estoque for zerado por outra transação antes da finalização, então o sistema deve validar a disponibilidade ao clicar em \"Finalizar Compra\".\n3. Dado que o estoque se tornou insuficiente, quando o cliente tentar finalizar a compra, então o sistema deve impedir a conclusão do pedido e notificar o cliente sobre a indisponibilidade do item.\n4. Dado que o pedido foi bloqueado por falta de estoque, quando o cliente retornar ao carrinho, então o sistema deve atualizar o status do item para \"indisponível\" ou removê-lo automaticamente.\n\n## Plano técnico proposto\n*   **Diagnóstico:** Investigar a camada de serviço responsável pela persistência do pedido. Verificar se a validação de estoque é realizada apenas na adição ao carrinho (front-end/cache) ou se há uma verificação atômica no banco de dados no momento do *checkout*.\n*   **Proposta de correção:** \n    *   Implementar uma verificação de estoque *server-side* no endpoint de finalização de compra.\n    *   Utilizar transações de banco de dados (ex: `SELECT FOR UPDATE` ou verificação de *versionamento/concorrência*) para garantir que o estoque não seja alterado entre a validação e a gravação do pedido.\n*   **Testes:** \n    *   Simular concorrência: disparar duas requisições de finalização simultâneas para o mesmo item com estoque unitário e validar se apenas uma é processada com sucesso.\n    *   Validar a mensagem de erro para o usuário quando o estoque for esgotado durante o processo de *checkout*.\n\n## Pontos a esclarecer\nO sistema possui algum mecanismo de reserva temporária de estoque ao adicionar itens ao carrinho ou o estoque é reservado apenas na finalização?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:16.655802+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.925,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.8871,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.8743,
+          "comment": "A resposta é de alta qualidade e tecnicamente superior à esperada, adicionando um plano de ação robusto. A precisão é alta, embora o modelo tenha alterado levemente a User Story (focando no cliente em vez do sistema). O recall é alto, cobrindo os critérios de aceitação e o problema central. A omissão parcial ocorreu nos 'Critérios de Prevenção' da resposta esperada (reserva temporária de 15 min), que o modelo tratou apenas como uma pergunta no final, em vez de incorporá-los como requisitos de solução."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente, superando a referência em estrutura e profundidade técnica. A organização em seções (Contexto, User Story, Critérios, Plano Técnico) facilita a leitura e a implementação. A linguagem é profissional, precisa e técnica, adequada ao contexto de desenvolvimento de software. Não há ambiguidades, pois os cenários de teste e a lógica de correção estão bem definidos. A concisão é alta, mantendo apenas informações relevantes para a resolução do bug. O score não é 1.0 apenas porque a resposta de referência sugere uma funcionalidade de 'reserva temporária' que é uma boa prática de negócio omitida."
+        },
+        {
+          "key": "precision",
+          "score": 0.9,
+          "comment": "A resposta gerada é de alta qualidade e tecnicamente precisa. Ela expande o relato do bug para um formato de documentação de engenharia (User Story, Critérios de Aceitação e Plano Técnico), o que é útil, embora vá além da resposta esperada (Ground Truth). Não há alucinações, pois as sugestões técnicas (como 'SELECT FOR UPDATE') são práticas padrão de mercado para resolver problemas de concorrência em e-commerce. A pequena redução no score deve-se ao fato de a resposta ter adicionado complexidade técnica não solicitada, em vez de focar estritamente nos critérios de prevenção e contexto do bug fornecidos."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-ac45-7b24-aa3f-42182ebf88f3",
+      "example_id": "fc159509-bd7e-4caf-bc3e-958cb5cee0fd",
+      "inputs": {
+        "bug_report": "Modal de confirmação de exclusão aparece atrás do menu lateral em telas pequenas (< 768px).\n\nDetalhes:\n- z-index do modal: 1000\n- z-index do menu lateral: 1050\n- Usuários não conseguem clicar nos botões do modal\n- Precisam fechar o menu lateral antes"
+      },
+      "outputs": {
+        "answer": "## Título\nAjustar sobreposição do modal de exclusão em relação ao menu lateral\n\n## Contexto do defeito\nAtual: em telas menores que 768px, o modal de confirmação (z-index: 1000) é renderizado atrás do menu lateral (z-index: 1050), impedindo a interação com os botões de ação.\nEsperado: o modal deve sobrepor o menu lateral para permitir a confirmação ou cancelamento da exclusão sem a necessidade de fechar o menu previamente.\n\n## User Story\nComo usuário, quero que o modal de confirmação de exclusão seja exibido acima de qualquer outro elemento da interface, para que eu possa concluir a ação de exclusão sem interrupções em dispositivos móveis.\n\n## Critérios de aceitação\n1. Dado que a largura da tela é inferior a 768px, quando o modal de exclusão for aberto com o menu lateral visível, então o modal deve estar posicionado acima do menu lateral.\n2. Dado que o modal está visível, quando o usuário clicar nos botões de ação do modal, então a ação deve ser executada corretamente.\n3. Dado que o modal está visível, quando o usuário tentar interagir com o menu lateral, então o menu deve estar inacessível (bloqueado pelo overlay do modal), garantindo a modalidade da janela.\n\n## Plano técnico proposto\nProposta: ajustar o empilhamento (stacking context) dos componentes.\n1. **Diagnóstico:** Verificar se o modal está inserido no DOM dentro de um container que limita seu z-index ou se o menu lateral possui um contexto de empilhamento isolado.\n2. **Correção:** \n   - Aumentar o `z-index` do modal para um valor superior a 1050 (ex: 1100) ou reduzir o `z-index` do menu lateral, caso o design permita.\n   - Alternativamente, mover o modal para a raiz do `body` (usando *Portals* em frameworks como React) para garantir que ele escape de qualquer contexto de empilhamento restritivo.\n3. **Testes:** Validar a renderização em resoluções de 320px, 375px e 767px. Confirmar que o overlay do modal cobre o menu lateral, impedindo cliques acidentais no menu enquanto o modal estiver aberto.\n\n## Pontos a esclarecer\nO menu lateral utiliza alguma biblioteca de terceiros que impõe esse `z-index` de 1050 de forma dinâmica ou é um estilo fixo no CSS da aplicação?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:07.965471+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.94,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.8588,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.7875,
+          "comment": "A resposta é altamente precisa e tecnicamente correta, oferecendo soluções robustas como o uso de Portals. No entanto, o recall foi penalizado pela omissão dos critérios de acessibilidade (foco do teclado, tecla ESC, fechamento no backdrop) e do requisito de design (90% da largura da tela), que estavam presentes na resposta esperada. A resposta gerada focou quase exclusivamente na correção do bug de z-index, ignorando as boas práticas de UX/Acessibilidade solicitadas no prompt original."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta é excelente, superando a referência em termos de profissionalismo e profundidade técnica. A organização é impecável, utilizando uma estrutura de ticket de desenvolvimento padrão (User Story, Critérios, Plano Técnico). A linguagem é precisa, técnica e profissional. Não há ambiguidade, pois o problema e a solução são detalhados com clareza. A concisão é muito boa; embora seja mais longa que a referência, o conteúdo extra (como a sugestão de Portals e o diagnóstico) agrega valor real ao desenvolvedor que executará a tarefa, justificando o tamanho."
+        },
+        {
+          "key": "precision",
+          "score": 0.93,
+          "comment": "A resposta gerada é altamente precisa e tecnicamente correta. Ela identifica corretamente o problema de z-index e propõe soluções padrão da indústria (como Portals). Não apresenta alucinações, pois as sugestões são baseadas em boas práticas de desenvolvimento web. O foco é excelente, estruturando o problema como um ticket de tarefa técnica. A pequena diferença em relação à 'Ground Truth' é que a resposta gerada é mais técnica e estruturada, enquanto a referência foca mais em requisitos de acessibilidade e UX, mas ambas convergem para a mesma solução técnica."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-54ab-76ae-910a-25625e335e18",
+      "example_id": "dd90f937-0b1a-4e61-8f61-01e31636b9b8",
+      "inputs": {
+        "bug_report": "Sistema de checkout com múltiplas falhas críticas.\n\nPROBLEMAS IDENTIFICADOS:\n\n1. SEGURANÇA - XSS no campo de cupom:\n   - Input: <script>alert('xss')</script>\n   - Sistema executa o script\n   - Não há sanitização de entrada\n\n2. INTEGRAÇÃO - Gateway de pagamento retorna erro intermitente:\n   - POST /api/payment/process retorna 504 Gateway Timeout em 30% dos casos\n   - Clientes são cobrados mas pedido não é criado\n   - Logs: \"Connection pool exhausted\" no Postgres\n\n3. LÓGICA DE NEGÓCIO - Race condition em cupons de desconto:\n   - Cupom \"PROMO10\" (limite: 100 usos)\n   - Sistema permitiu 147 usos\n   - Verificação de limite não é atômica\n\n4. UX - Loading infinito após timeout:\n   - Se pagamento demora > 30s\n   - Tela fica com spinner eternamente\n   - Usuário não sabe se pagamento foi processado\n\nIMPACTO:\n- 150+ clientes afetados na última semana\n- Perda estimada: R$ 15.000 em cupons indevidos\n- 45 tickets de suporte abertos\n- Rating do app caiu de 4.5 para 3.2 estrelas"
+      },
+      "outputs": {
+        "answer": "## Título\nCorreção de vulnerabilidades, falhas de integração e consistência no checkout\n\n## Contexto do defeito\nO sistema de checkout apresenta quatro falhas críticas que impactam a segurança, a integridade financeira e a experiência do usuário:\n1. **Segurança:** O campo de cupom é vulnerável a XSS, executando scripts injetados.\n2. **Integração:** O endpoint `/api/payment/process` apresenta erro 504 (Timeout) em 30% das requisições, resultando em cobranças sem criação de pedidos. Logs indicam esgotamento do pool de conexões Postgres.\n3. **Lógica de Negócio:** O limite de uso de cupons (ex: \"PROMO10\") é excedido devido à falta de atomicidade na verificação.\n4. **UX:** O sistema mantém um estado de carregamento infinito após timeouts, sem feedback ao usuário.\n\n## User Story\nComo usuário e administrador do sistema, quero um processo de checkout seguro, estável e consistente, para garantir que pagamentos sejam processados corretamente, cupons sejam validados com precisão e a interface forneça feedback claro em caso de falhas.\n\n## Critérios de aceitação\n1. **Segurança:** Dado que um usuário insira um script no campo de cupom, quando o formulário for submetido, então o sistema deve sanitizar a entrada e não executar o código.\n2. **Integração:** Dado que o gateway de pagamento demore a responder, quando ocorrer um timeout, então o sistema deve garantir a consistência entre a cobrança e a criação do pedido (transacionalidade).\n3. **Lógica de Negócio:** Dado um cupom com limite de 100 usos, quando múltiplos usuários tentarem utilizá-lo simultaneamente, então o sistema deve garantir que o limite não seja ultrapassado (atomicidade).\n4. **UX:** Dado que o processamento de pagamento exceda 30 segundos, quando ocorrer um erro de timeout, então o sistema deve exibir uma mensagem de erro clara ao usuário, permitindo que ele verifique o status ou tente novamente.\n\n## Plano técnico proposto\n\n### 1. Segurança (XSS)\n*   **Proposta:** Implementar sanitização de entrada no backend e codificação de saída (output encoding) no frontend para o campo de cupom.\n*   **Teste:** Tentar injetar `<script>alert('xss')</script>` e validar que o conteúdo é tratado como texto simples.\n\n### 2. Integração e Performance (504 e Pool de Conexões)\n*   **Diagnóstico:** Investigar o uso de conexões no Postgres. O erro \"Connection pool exhausted\" sugere vazamento de conexões ou tempo de retenção excessivo.\n*   **Proposta:** Implementar transações atômicas (ACID) entre o processamento do pagamento e a criação do pedido. Otimizar o tempo de vida das conexões no pool.\n*   **Teste:** Simular carga no endpoint de pagamento e verificar se o pool de conexões se estabiliza.\n\n### 3. Lógica de Negócio (Race Condition)\n*   **Proposta:** Utilizar bloqueios otimistas (versionamento de registro) ou bloqueios pessimistas (`SELECT FOR UPDATE`) na tabela de cupons durante a verificação de limite.\n*   **Teste:** Executar testes de carga concorrentes tentando utilizar o mesmo cupom simultaneamente para garantir que o limite seja respeitado.\n\n### 4. UX (Loading Infinito)\n*   **Proposta:** Implementar um timeout explícito no frontend (ex: 30s) que interrompa o estado de carregamento e exiba um modal de erro com instruções de suporte.\n*   **Teste:** Simular um atraso de 35s na resposta do servidor e validar se a interface apresenta a mensagem de erro ao usuário.\n\n## Pontos a esclarecer\n1. Existe uma política de retentativa (retry) automática configurada para o gateway de pagamento que possa estar causando duplicidade?\n2. Qual é a estratégia atual de gerenciamento de transações entre o serviço de pagamento e o serviço de pedidos?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:26:04.612697+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.94,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.9136,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.8972,
+          "comment": "A resposta é altamente precisa e profissional, cobrindo todos os problemas identificados com soluções técnicas adequadas. A precisão é alta, pois não há informações incorretas. O recall é ligeiramente inferior porque a resposta omitiu detalhes técnicos específicos presentes no 'Ground Truth', como a menção a 'Content Security Policy', 'Circuit Breaker', 'Idempotency Key' e 'Webhooks', que são cruciais para a robustez da solução proposta. No entanto, a estrutura e a qualidade técnica da resposta são excelentes."
+        },
+        {
+          "key": "clarity",
+          "score": 0.95,
+          "comment": "A resposta gerada é excelente em clareza e organização. Ela estrutura o problema de forma profissional, utilizando User Stories e Critérios de Aceitação bem definidos, o que facilita a compreensão técnica e de negócio. A linguagem é precisa, direta e evita ambiguidades. Em comparação à resposta de referência, ela é ligeiramente mais concisa e focada na execução técnica, embora a referência seja superior na estruturação de tarefas. A pontuação reflete a alta qualidade, organização lógica e a eficácia na comunicação das soluções propostas para os problemas críticos identificados."
+        },
+        {
+          "key": "precision",
+          "score": 0.93,
+          "comment": "A resposta é altamente precisa e profissional. Não apresenta alucinações, mantendo-se estritamente dentro dos problemas técnicos relatados. O foco é excelente, estruturando a solução de forma lógica e técnica. A pequena diferença em relação à 'Ground Truth' deve-se apenas à escolha de nomenclatura e organização (ex: a resposta sugeriu 'bloqueio otimista ou pessimista', enquanto a referência detalhou 'SELECT FOR UPDATE' ou 'Redis'), o que não invalida a correção factual. A resposta é tecnicamente sólida, abordando todos os pontos críticos com soluções adequadas ao contexto de engenharia de software."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-45b3-77d5-a94b-3e9c0217645a",
+      "example_id": "588d5d7b-5118-4656-b73a-148a299f73d0",
+      "inputs": {
+        "bug_report": "Sistema de relatórios gerenciais com problemas severos de performance e dados incorretos.\n\nCONTEXTO:\nAplicação SaaS B2B com 500+ empresas clientes, cada uma com 50-5000 usuários.\n\nPROBLEMAS:\n\n1. PERFORMANCE - Query N+1 no dashboard executivo:\n   - Endpoint: GET /api/reports/executive-dashboard\n   - Para cada empresa, faz query separada para buscar métricas\n   - 1 cliente com 100 departamentos = 101 queries\n   - Tempo de resposta: 45 segundos (SLA: 3s)\n   - Database CPU: 95% em horário de pico\n\n   Stack trace:\n   ```\n   SELECT * FROM metrics WHERE company_id = ?  (executado 100x)\n   SELECT * FROM users WHERE company_id = ?     (executado 100x)\n   SELECT * FROM licenses WHERE company_id = ?  (executado 100x)\n   ```\n\n2. LÓGICA DE NEGÓCIO - Cálculo de MRR (Monthly Recurring Revenue) inconsistente:\n   - Dashboard mostra: R$ 150.000 MRR\n   - Relatório financeiro: R$ 145.000 MRR\n   - Planilha contábil: R$ 147.500 MRR\n\n   Causas identificadas:\n   - Dashboard: considera cancelamentos do mês anterior\n   - Relatório: só considera assinaturas ativas\n   - Contábil: considera pró-rata de upgrades/downgrades\n   - Nenhuma fonte está 100% correta\n\n3. CACHE - Cache Redis desatualizado causa dados old:\n   - TTL do cache: 24 horas\n   - Cliente faz upgrade de plano\n   - Dashboard ainda mostra plano antigo por até 24h\n   - Invalidação manual não funciona corretamente\n\n4. CONCORRÊNCIA - Exportação de CSV trava servidor:\n   - Exportar relatório anual (365 dias, 50k linhas)\n   - Process fica em 100% CPU por 5 minutos\n   - Outras requisições ficam lentas\n   - Memória cresce até 4GB (limite: 2GB) → OOM Kill\n\nIMPACTO BUSINESS:\n- 15 clientes enterprise ameaçando cancelar contrato\n- CEO não confia nos números para apresentar ao board\n- Time de CS gastando 40h/semana explicando discrepâncias\n- Impossível fazer forecasting confiável"
+      },
+      "outputs": {
+        "answer": "## Título\nOtimização de performance, consistência de dados e estabilidade no sistema de relatórios\n\n## Contexto do defeito\nO sistema de relatórios gerenciais apresenta falhas críticas que impactam a confiança dos dados e a disponibilidade da aplicação.\n1. **Performance:** O endpoint `GET /api/reports/executive-dashboard` sofre com o problema de N+1 queries, resultando em 45s de tempo de resposta (SLA: 3s) e alta carga na CPU do banco.\n2. **Consistência:** O cálculo de MRR diverge entre o Dashboard, Relatório Financeiro e Planilha Contábil devido a regras de negócio conflitantes (consideração de cancelamentos, status de assinaturas e pró-rata).\n3. **Cache:** O Redis possui TTL de 24h sem invalidação efetiva, mantendo dados obsoletos após upgrades de plano.\n4. **Concorrência:** A exportação de relatórios anuais (50k linhas) causa estouro de memória (OOM Kill) e degradação do serviço para outros usuários.\n\n## User Story\nComo gestor de contas, quero visualizar relatórios precisos, atualizados e performáticos, para que eu possa tomar decisões estratégicas baseadas em dados confiáveis e manter a estabilidade da plataforma.\n\n## Critérios de aceitação\n1. **Performance:** Dado que um usuário acessa o dashboard executivo, quando a requisição for processada, então o tempo de resposta deve ser inferior a 3s, eliminando o padrão de queries N+1.\n2. **Consistência:** Dado que o MRR é calculado, quando o relatório for gerado, então o valor deve ser unificado e validado conforme a regra contábil oficial, eliminando discrepâncias entre fontes.\n3. **Cache:** Dado que um cliente realiza um upgrade de plano, quando o dashboard for carregado, então os dados devem refletir a alteração imediatamente, sem aguardar o TTL de 24h.\n4. **Concorrência:** Dado que um usuário solicita a exportação de um relatório anual, quando o processamento ocorrer, então o consumo de memória deve permanecer dentro do limite de 2GB e não deve impactar a latência de outras requisições.\n\n## Plano técnico proposto\n\n### 1. Performance (N+1)\n*   **Proposta:** Refatorar a camada de acesso a dados para utilizar *Eager Loading* ou *Join* único, consolidando as consultas de `metrics`, `users` e `licenses` em uma única chamada ou em consultas otimizadas por lote (`WHERE IN (...)`).\n*   **Teste:** Validar o número de queries geradas no log de debug para um cenário de 100 departamentos.\n\n### 2. Consistência de MRR\n*   **Proposta:** Centralizar a lógica de cálculo de MRR em um serviço único (Service Layer) que seja consumido tanto pelo Dashboard quanto pelo Relatório Financeiro. Definir a regra de negócio oficial (ex: incluir pró-rata e excluir cancelamentos retroativos).\n*   **Teste:** Comparar o resultado do novo serviço com a planilha contábil (fonte da verdade) para uma amostra de clientes.\n\n### 3. Cache\n*   **Proposta:** Implementar o padrão *Cache-Aside* com invalidação explícita (Event-Driven). Sempre que ocorrer um evento de \"Upgrade de Plano\", o sistema deve disparar uma invalidação da chave correspondente no Redis.\n*   **Teste:** Realizar upgrade de plano e verificar se o dashboard reflete a mudança imediatamente após o refresh.\n\n### 4. Concorrência (Exportação)\n*   **Proposta:** Migrar a exportação de CSV para um processo assíncrono (Background Job/Queue). O servidor deve retornar um status \"Processando\" e notificar o usuário via e-mail ou webhook quando o arquivo estiver pronto, evitando o bloqueio da thread principal e o consumo excessivo de memória.\n*   **Teste:** Simular exportação de 50k linhas e monitorar o uso de memória do processo (deve manter-se abaixo de 2GB).\n\n## Pontos a esclarecer\n1. Qual é a regra de negócio oficial para o cálculo de MRR que deve ser adotada como \"fonte da verdade\"?\n2. Existe uma fila de mensagens (ex: RabbitMQ, SQS) disponível para implementar o processamento assíncrono das exportações?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:25:42.187546+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.89,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.9136,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.8972,
+          "comment": "A resposta é de alta qualidade, técnica e bem estruturada. A precisão é alta pois todas as sugestões são tecnicamente sólidas e relevantes. O recall é ligeiramente menor pois a resposta omitiu detalhes específicos presentes no 'Ground Truth', como a sugestão de uso de materialized views, índices compostos, o limite de 1000 linhas por chunk no streaming de CSV e o cronograma detalhado de Sprints, que eram partes importantes do contexto fornecido."
+        },
+        {
+          "key": "clarity",
+          "score": 0.85,
+          "comment": "A resposta é muito bem estruturada, profissional e tecnicamente precisa. A organização em seções (Contexto, User Story, Critérios, Plano Técnico) facilita a leitura. A linguagem é clara e direta, adequada para um ambiente de engenharia. A pontuação não é máxima porque, comparada à resposta de referência, falta um detalhamento mais prático (como o exemplo de query SQL ou o cronograma de tarefas em sprints), o que tornaria a execução ainda menos ambígua para a equipe técnica. No geral, é uma excelente resposta, muito superior à média."
+        },
+        {
+          "key": "precision",
+          "score": 0.93,
+          "comment": "A resposta gerada é altamente precisa e técnica, sem alucinações. Ela aborda corretamente os quatro pilares do problema (Performance, Consistência, Cache, Concorrência) com soluções de engenharia de software padrão (Eager Loading, Service Layer, Cache-Aside, Background Jobs). O score não é 1.0 apenas porque a 'Resposta Esperada' (Ground Truth) fornecida no prompt continha detalhes operacionais mais granulares (como o uso de Materialized Views e estratégias de cache híbrido) que a resposta gerada omitiu, embora a resposta gerada permaneça tecnicamente correta e focada no problema proposto."
+        }
+      ]
+    },
+    {
+      "id": "01a1560e-2c2b-7222-819e-47e3b4569694",
+      "example_id": "7bd1cb5f-f7d3-4de1-9371-5744e2fe8545",
+      "inputs": {
+        "bug_report": "App de produtividade offline-first com bugs críticos de sincronização.\n\nCONTEXTO:\nApp mobile (iOS + Android) que funciona offline e sincroniza quando tem internet.\nUsuários: vendedores em campo, muitas vezes sem conexão.\n\nPROBLEMAS REPORTADOS:\n\n1. CONFLITO DE DADOS - Merge incorreto causa perda de dados:\n\n   Cenário:\n   - Usuário A (offline) edita tarefa #123: \"Ligar para cliente X às 14h\"\n   - Usuário B (offline) edita mesma tarefa: \"Ligar para cliente X às 15h (reagendado)\"\n   - Ambos sincronizam\n   - Sistema aplica \"last write wins\" → dados do usuário A perdidos\n   - Usuário A não sabe que seu agendamento foi sobrescrito\n\n   Impacto: 30+ casos de compromissos perdidos na última semana\n\n2. SINCRONIZAÇÃO - Upload infinito de anexos grandes:\n\n   Cenário:\n   - Usuário anexa PDF de 50MB em uma tarefa\n   - Inicia upload via 4G\n   - Conexão cai no meio (sinal fraco)\n   - App reinicia upload do zero (não retoma)\n   - Após 5 tentativas, desiste mas não avisa o usuário\n   - Tarefa fica \"sincronizada\" mas sem anexo\n\n   Logs:\n   ```\n   [SYNC] Uploading attachment.pdf (50MB)... 40% complete\n   [NETWORK] Connection lost\n   [SYNC] Retry 1/5 - Restarting from 0%\n   [SYNC] Uploading attachment.pdf (50MB)... 35% complete\n   [NETWORK] Connection lost\n   [SYNC] Retry 2/5 - Restarting from 0%\n   ...\n   [SYNC] Max retries exceeded. Giving up.\n   [ERROR] Upload failed but status marked as synced\n   ```\n\n3. ORDENAÇÃO - Operações aplicadas fora de ordem no servidor:\n\n   Cenário offline (usuário sem internet por 2 horas):\n   - 10:00 - Cria tarefa \"Tarefa A\"\n   - 10:15 - Edita \"Tarefa A\" → \"Tarefa A - Urgente\"\n   - 10:30 - Deleta \"Tarefa A\"\n\n   Ao sincronizar:\n   - Servidor recebe DELETE antes do CREATE (ordem errada)\n   - Tenta deletar tarefa que não existe → erro 404\n   - CREATE e UPDATE são aplicados depois\n   - Resultado: tarefa existe (deveria estar deletada)\n   - Timestamp client-side não é respeitado\n\n4. MEMÓRIA - App crasha ao sincronizar 1000+ itens pendentes:\n\n   Cenário:\n   - Usuário fica 1 semana offline\n   - Acumula 1.500 operações pendentes (create, update, delete)\n   - Volta para área com WiFi\n   - App tenta sincronizar tudo de uma vez\n   - Carrega todos os 1.500 itens na memória\n   - iOS: Memory Warning → App crashado pelo OS\n   - Android: OutOfMemoryError\n\n   Memória medida: 850MB (limite iOS: 700MB)\n\nIMPACTO:\n- 250+ usuários afetados\n- NPS caiu de 8.5 para 4.2\n- 80% dos reviews negativos mencionam \"perda de dados\"\n- Churn rate aumentou 15% no último mês\n- Time de vendas perdeu R$ 200k em oportunidades por dados perdidos"
+      },
+      "outputs": {
+        "answer": "## Título\nCorreção de falhas críticas de sincronização, integridade e estabilidade no modo offline-first\n\n## Contexto do defeito\nO aplicativo apresenta falhas graves na sincronização de dados em cenários offline-first, impactando a integridade das informações e a estabilidade do sistema.\n1. **Conflito de dados:** O sistema utiliza \"last write wins\", sobrescrevendo edições de usuários sem notificação.\n2. **Upload de anexos:** O processo de upload não suporta retomada (resume), reiniciando do zero após quedas de conexão e falhando silenciosamente após 5 tentativas.\n3. **Ordenação:** Operações offline são processadas fora de ordem no servidor, ignorando timestamps e causando inconsistências (ex: deletar uma tarefa que é recriada posteriormente).\n4. **Memória:** O processamento em lote de 1.500+ operações pendentes causa estouro de memória (OOM) e crash do aplicativo.\n\n## User Story\nComo vendedor em campo, quero que minhas alterações offline sejam sincronizadas de forma íntegra, resiliente e ordenada, para que eu não perca dados de compromissos ou anexos importantes e o aplicativo permaneça estável.\n\n## Critérios de aceitação\n\n### 1. Conflito de Dados\n1. Dado que dois usuários editaram a mesma tarefa offline, quando sincronizarem, então o sistema deve detectar o conflito e notificar o usuário ou aplicar uma estratégia de merge (ex: manter ambas as alterações ou solicitar resolução manual), em vez de sobrescrever silenciosamente.\n\n### 2. Upload de Anexos\n2. Dado um upload de anexo interrompido por queda de conexão, quando a conexão for restabelecida, então o app deve retomar o upload a partir do último byte enviado (chunking), sem reiniciar do zero.\n3. Dado que o limite de tentativas foi atingido, quando o upload falhar, então o status da tarefa não deve ser marcado como \"sincronizado\" e o usuário deve receber um alerta de erro.\n\n### 3. Ordenação\n4. Dado um histórico de operações offline (Create -> Update -> Delete), quando sincronizadas, então o servidor deve processar as operações respeitando estritamente o timestamp de cada ação, garantindo que o estado final seja a exclusão da tarefa.\n\n### 4. Memória\n5. Dado um volume de 1.500+ operações pendentes, quando o app iniciar a sincronização, então o processamento deve ocorrer em lotes (batching) ou fila sequencial, mantendo o consumo de memória abaixo do limite crítico do sistema operacional (iOS/Android).\n\n## Plano técnico proposto\n\n1. **Conflito:** Proposta: Implementar versionamento de registros (ETag ou `version_number`). Se a versão enviada for inferior à do servidor, disparar erro de conflito para tratamento na UI.\n2. **Upload:** Proposta: Implementar upload segmentado (Multipart Upload). O cliente deve solicitar ao servidor o último byte recebido antes de retomar o envio.\n3. **Ordenação:** Proposta: O cliente deve enviar um *payload* contendo a lista de operações ordenadas por timestamp. O servidor deve processar a fila transacionalmente, validando a existência do recurso antes de cada operação.\n4. **Memória:** Proposta: Implementar um *Sync Manager* que processa a fila de pendências em lotes (ex: 50 itens por vez). Utilizar persistência local (SQLite/Room) para ler os itens sob demanda, evitando carregar todo o *queue* na memória RAM.\n\n**Riscos de regressão:** Alterações na lógica de sincronização podem causar loops infinitos ou duplicação de registros se não forem testadas com cenários de rede instável simulada.\n\n## Pontos a esclarecer\n1. Qual é a estratégia de resolução de conflitos preferencial para o negócio (ex: priorizar o dado mais recente, manter ambos ou notificar o usuário)?\n2. Existe um limite máximo de tamanho de arquivo para anexos que o servidor suporta atualmente?\n3. O servidor possui suporte a transações atômicas para garantir que a sequência de operações (Create/Update/Delete) seja processada como um bloco único?"
+      },
+      "error": null,
+      "end_time": "2026-10-19 21:25:38.354862+00:00",
+      "feedback": [
+        {
+          "key": "helpfulness",
+          "score": 0.84,
+          "comment": "Média entre Clarity e Precision"
+        },
+        {
+          "key": "correctness",
+          "score": 0.8636,
+          "comment": "Média entre F1-Score e Precision"
+        },
+        {
+          "key": "f1_score",
+          "score": 0.8972,
+          "comment": "A resposta é altamente precisa e tecnicamente sólida. O modelo capturou todos os problemas críticos e propôs soluções alinhadas às melhores práticas. No entanto, o recall foi penalizado pois a resposta omitiu detalhes específicos exigidos nos critérios técnicos, como a menção explícita a CRDTs/Vector Clocks, o protocolo detalhado de chunked upload (ex: endpoints de API) e a estratégia de Rate Limiting/Exponential Backoff, que estavam presentes no contexto e na resposta esperada. A estrutura está excelente, mas faltou profundidade técnica em alguns requisitos de implementação."
+        },
+        {
+          "key": "clarity",
+          "score": 0.85,
+          "comment": "A resposta é muito bem estruturada, utilizando uma linguagem técnica precisa e profissional. A organização em tópicos facilita a leitura e a compreensão dos problemas e soluções. É concisa e evita ambiguidades, apresentando um plano de ação claro. O score não é máximo porque, comparada à resposta de referência, falta um nível maior de detalhamento técnico (como exemplos de protocolos ou algoritmos específicos) e uma visão mais estruturada de métricas e fases de execução, que tornariam a implementação prática mais segura e menos sujeita a interpretações equivocadas pela equipe de desenvolvimento."
+        },
+        {
+          "key": "precision",
+          "score": 0.83,
+          "comment": "A resposta é tecnicamente sólida e precisa, mas falha em atingir a nota máxima por não incorporar a profundidade da 'Ground Truth'. Embora correta, a resposta gerada é superficial em relação aos protocolos de implementação (ex: não detalha o uso de CRDTs ou o fluxo de chunked upload com checkpoints). Ela não alucina, mas omite requisitos críticos de resiliência presentes na referência, como a estratégia de backup de conflitos e o controle de memória via streaming. O foco é bom, mas a completude técnica é inferior ao padrão esperado para um avaliador especializado."
+        }
+      ]
+    }
+  ]
+}

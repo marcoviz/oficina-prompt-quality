@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-19",
+  "dataset_public_url": "https://smith.langchain.com/public/b4d329f4-aeb1-47ac-ac0f-b8e4ad3b8a1f/d",
+  "prompt_public_url": "https://smith.langchain.com/hub/marcoviz/bug_to_user_story_v2/70d13a64",
+  "threshold": 0.8,
+  "final_iteration": 4,
+  "iterations": [
+    {
+      "iteration": 1,
+      "prompt_commit": "f656413b",
+      "model": "gemini-3.5-flash-lite",
+      "experiment_id": "585222e6-0812-4a13-ac02-9051253b350b",
+      "experiment_url": "https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb/compare?selectedSessions=585222e6-0812-4a13-ac02-9051253b350b",
+      "evaluated_examples": 15,
+      "scores": {
+        "helpfulness": 0.895,
+        "correctness": 0.8541,
+        "f1_score": 0.8188,
+        "clarity": 0.9007,
+        "precision": 0.8893
+      },
+      "average": 0.8716,
+      "passed": true,
+      "evaluator_errors": [],
+      "valid_quality_evidence": true
+    },
+    {
+      "iteration": 2,
+      "prompt_commit": "9a8c8a89",
+      "model": "gemini-3.1-flash-lite",
+      "experiment_id": "7fe02fd5-80f9-463a-ab7b-7588c9453f66",
+      "experiment_url": "https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb/compare?selectedSessions=7fe02fd5-80f9-463a-ab7b-7588c9453f66",
+      "evaluated_examples": 15,
+      "scores": {
+        "helpfulness": 0.858,
+        "correctness": 0.8045,
+        "f1_score": 0.783,
+        "clarity": 0.89,
+        "precision": 0.826
+      },
+      "average": 0.8323,
+      "passed": false,
+      "evaluator_errors": [],
+      "valid_quality_evidence": true
+    },
+    {
+      "iteration": 3,
+      "prompt_commit": "ef57c60f",
+      "model": "gemini-3.1-flash-lite",
+      "experiment_id": "f49898b3-a66c-463d-8526-be9b3f9d0cae",
+      "experiment_url": "https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb/compare?selectedSessions=f49898b3-a66c-463d-8526-be9b3f9d0cae",
+      "evaluated_examples": 15,
+      "scores": {
+        "helpfulness": 0.895,
+        "correctness": 0.8506,
+        "f1_score": 0.8313,
+        "clarity": 0.92,
+        "precision": 0.87
+      },
+      "average": 0.8734,
+      "passed": true,
+      "evaluator_errors": [
+        {
+          "run_id": "01a1560d-bc3d-741c-8f0d-24abe1bac9ed",
+          "metric": "f1_score",
+          "score": 0.0,
+          "comment": "Erro na avaliação: Error calling model 'gemini-3.1-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 7.109982215s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '7s'}]}}"
+        }
+      ],
+      "valid_quality_evidence": false
+    },
+    {
+      "iteration": 4,
+      "prompt_commit": "70d13a64",
+      "model": "gemini-3.1-flash-lite",
+      "experiment_id": "3c29e829-f895-4700-bfd5-185197c5f010",
+      "experiment_url": "https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb/compare?selectedSessions=3c29e829-f895-4700-bfd5-185197c5f010",
+      "evaluated_examples": 15,
+      "scores": {
+        "helpfulness": 0.9063,
+        "correctness": 0.8953,
+        "f1_score": 0.9012,
+        "clarity": 0.9233,
+        "precision": 0.8893
+      },
+      "average": 0.9031,
+      "passed": true,
+      "evaluator_errors": [],
+      "valid_quality_evidence": true
+    }
+  ],
+  "public_traces": [
+    {
+      "id": "01a1560f-be34-7eab-a76c-80ae50531a49",
+      "label": "simple",
+      "url": "https://smith.langchain.com/public/15a89758-5725-4292-b3a3-0c3d9f3dc960/r"
+    },
+    {
+      "id": "01a1560e-fb3f-7f09-b87b-3a9691560b2e",
+      "label": "medium",
+      "url": "https://smith.langchain.com/public/1b000e99-f9e8-471b-bec5-8fef7a4f945a/r"
+    },
+    {
+      "id": "01a1560e-2c2b-7222-819e-47e3b4569694",
+      "label": "complex",
+      "url": "https://smith.langchain.com/public/c785d732-cb6e-4050-af36-75f1ce27ddb1/r"
+    }
+  ],
+  "protected_files_sha256": {
+    "src/evaluate.py": "fba51aa7d8ad0545f2c830aef92e8632de37cf77bb306f33a056e7071d883b57",
+    "src/metrics.py": "aee4e4704c9c6b6caba33dd0b3f6e0612fa341d642d2f3d4a4e9a2c641fc1ead",
+    "src/utils.py": "7a3bcef867506828b6ef45e71105f57a42acf8f39fcaa670d286b133fbbecdf5",
+    "datasets/bug_to_user_story.jsonl": "4b1ef15e41437f7823daae6f0cef92a7ba16b19352d4d3b36a1bbc69db48f60b"
+  }
+}

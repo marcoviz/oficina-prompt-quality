@@ -1,0 +1,86 @@
+
+==================================================
+AVALIAÇÃO DE PROMPTS OTIMIZADOS
+==================================================
+
+Provider: google
+Modelo Principal: gemini-3.1-flash-lite
+Modelo de Avaliação: gemini-3.1-flash-lite
+
+Criando dataset de avaliação: oficina-prompt-quality-eval...
+   ✓ Carregados 15 exemplos do arquivo datasets/bug_to_user_story.jsonl
+   ✓ Dataset 'oficina-prompt-quality-eval' já existe, usando existente
+   ✓ https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb
+
+======================================================================
+PROMPTS PARA AVALIAR
+======================================================================
+
+Este script irá puxar prompts do LangSmith Hub.
+Certifique-se de ter feito push dos prompts antes de avaliar:
+  python src/push_prompts.py
+
+
+🔍 Avaliando: marcoviz/bug_to_user_story_v2
+   Puxando prompt do LangSmith Hub: marcoviz/bug_to_user_story_v2
+   ✓ Prompt carregado com sucesso
+   Rodando experimento no LangSmith...
+View the evaluation results for experiment: 'marcoviz-bug_to_user_story_v2-c62db27c' at:
+https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb/compare?selectedSessions=7fe02fd5-80f9-463a-ab7b-7588c9453f66
+
+
+      [1] F1:0.84 Clarity:0.75 Precision:0.83
+      [2] F1:0.84 Clarity:0.75 Precision:0.83
+      [3] F1:0.72 Clarity:0.90 Precision:0.83
+      [4] F1:0.84 Clarity:0.85 Precision:0.83
+      [5] F1:0.72 Clarity:0.95 Precision:0.83
+      [6] F1:0.87 Clarity:0.95 Precision:0.93
+      [7] F1:0.90 Clarity:0.95 Precision:0.97
+      [8] F1:0.87 Clarity:0.95 Precision:0.93
+      [9] F1:0.69 Clarity:0.95 Precision:0.83
+      [10] F1:0.85 Clarity:0.90 Precision:0.83
+      [11] F1:0.75 Clarity:0.90 Precision:0.83
+      [12] F1:0.75 Clarity:0.95 Precision:0.83
+      [13] F1:0.92 Clarity:0.90 Precision:0.83
+      [14] F1:0.87 Clarity:0.95 Precision:0.83
+      [15] F1:0.32 Clarity:0.75 Precision:0.43
+
+==================================================
+Prompt: marcoviz/bug_to_user_story_v2
+==================================================
+
+Métricas Derivadas:
+  - Helpfulness: 0.86 ✓
+  - Correctness: 0.80 ✓
+
+Métricas Base:
+  - F1-Score: 0.78 ✗
+  - Clarity: 0.89 ✓
+  - Precision: 0.83 ✓
+
+--------------------------------------------------
+📊 MÉDIA GERAL: 0.8323
+--------------------------------------------------
+
+❌ STATUS: REPROVADO
+⚠️  Métricas abaixo de 0.8: f1_score
+⚠️  Média atual: 0.8323 | Necessário: 0.8000
+
+==================================================
+RESUMO FINAL
+==================================================
+
+Prompts avaliados: 1
+Aprovados: 0
+Reprovados: 1
+
+Resultados no LangSmith (notas gravadas como feedback no experimento):
+  marcoviz/bug_to_user_story_v2
+    https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb/compare?selectedSessions=7fe02fd5-80f9-463a-ab7b-7588c9453f66
+
+⚠️  Alguns prompts não atingiram todas as métricas >= 0.8
+
+Próximos passos:
+1. Refatore os prompts com score baixo
+2. Faça push novamente: python src/push_prompts.py
+3. Execute: python src/evaluate.py novamente

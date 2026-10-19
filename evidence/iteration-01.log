@@ -1,0 +1,204 @@
+
+==================================================
+AVALIAÇÃO DE PROMPTS OTIMIZADOS
+==================================================
+
+Provider: google
+Modelo Principal: gemini-3.5-flash-lite
+Modelo de Avaliação: gemini-3.5-flash-lite
+
+Criando dataset de avaliação: oficina-prompt-quality-eval...
+   ✓ Carregados 15 exemplos do arquivo datasets/bug_to_user_story.jsonl
+   ✓ Dataset criado com 15 exemplos
+   ✓ https://smith.langchain.com/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb
+
+======================================================================
+PROMPTS PARA AVALIAR
+======================================================================
+
+Este script irá puxar prompts do LangSmith Hub.
+Certifique-se de ter feito push dos prompts antes de avaliar:
+  python src/push_prompts.py
+
+
+🔍 Avaliando: marcoviz/bug_to_user_story_v2
+   Puxando prompt do LangSmith Hub: marcoviz/bug_to_user_story_v2
+   ✓ Prompt carregado com sucesso
+   Rodando experimento no LangSmith...
+View the evaluation results for experiment: 'marcoviz-bug_to_user_story_v2-e6c6454f' at:
+https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb/compare?selectedSessions=585222e6-0812-4a13-ac02-9051253b350b
+
+
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+work/venv-prompts/lib/python3.12/site-packages/langchain_google_genai/chat_models.py:3908: UserWarning: Model 'gemini-3.5-flash-lite' uses fixed sampling defaults; the sampling parameter(s) temperature will be ignored.
+  request = self._build_request_config(
+      [1] F1:0.51 Clarity:0.90 Precision:0.87
+      [2] F1:0.90 Clarity:0.90 Precision:0.93
+      [3] F1:0.92 Clarity:0.85 Precision:0.95
+      [4] F1:0.79 Clarity:0.95 Precision:0.87
+      [5] F1:0.77 Clarity:0.95 Precision:0.93
+      [6] F1:0.74 Clarity:0.90 Precision:0.82
+      [7] F1:0.92 Clarity:0.95 Precision:0.93
+      [8] F1:0.85 Clarity:0.95 Precision:0.93
+      [9] F1:0.77 Clarity:0.90 Precision:0.83
+      [10] F1:0.82 Clarity:0.95 Precision:0.93
+      [11] F1:0.82 Clarity:0.85 Precision:0.83
+      [12] F1:0.87 Clarity:0.88 Precision:0.83
+      [13] F1:0.82 Clarity:0.88 Precision:0.93
+      [14] F1:0.95 Clarity:0.85 Precision:0.93
+      [15] F1:0.82 Clarity:0.85 Precision:0.83
+
+==================================================
+Prompt: marcoviz/bug_to_user_story_v2
+==================================================
+
+Métricas Derivadas:
+  - Helpfulness: 0.90 ✓
+  - Correctness: 0.85 ✓
+
+Métricas Base:
+  - F1-Score: 0.82 ✓
+  - Clarity: 0.90 ✓
+  - Precision: 0.89 ✓
+
+--------------------------------------------------
+📊 MÉDIA GERAL: 0.8716
+--------------------------------------------------
+
+✅ STATUS: APROVADO - Todas as métricas >= 0.8
+
+==================================================
+RESUMO FINAL
+==================================================
+
+Prompts avaliados: 1
+Aprovados: 1
+Reprovados: 0
+
+Resultados no LangSmith (notas gravadas como feedback no experimento):
+  marcoviz/bug_to_user_story_v2
+    https://smith.langchain.com/o/9456154d-20f9-4dab-9f76-3d41519461e6/datasets/c665eea4-95f0-4a7d-bd9b-f78b721a85fb/compare?selectedSessions=585222e6-0812-4a13-ac02-9051253b350b
+
+✅ Todos os prompts atingiram todas as métricas >= 0.8!
+
+Próximos passos:
+1. Documente o processo no README.md
+2. Capture screenshots das avaliações
+3. Faça commit e push para o GitHub
